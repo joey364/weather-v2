@@ -46,6 +46,7 @@ document.querySelector('.date').textContent = dateBuilder(new Date());
 const appElement = document.querySelector('.app');
 const searchInput = document.querySelector('.search-bar__input');
 const submitButton = document.querySelector('.search-bar__submit');
+const erroerDialog = document.querySelector('.dialog');
 
 submitButton.addEventListener('click', (e) => {
   e.preventDefault();
@@ -97,7 +98,11 @@ const getWeatherData = (query) => {
     })
 
     .catch((error) => {
-      console.warn(error);
+      console.log(error);
+      erroerDialog.show()
+      setTimeout(() => {
+       erroerDialog.close(); 
+      }, 2500);
       // alert('Do the search again');
     });
 };
@@ -184,7 +189,8 @@ const updateWeather = (
     )`;
 
   appElement.style.background =
-    `url(../assets/img/${getWeatherBackgroundImage(weather)}),` + bgGradient;
+    `url(../public/assets/img/${getWeatherBackgroundImage(weather)}),` +
+    bgGradient;
 
   appElement.style.backgroundBlendMode = 'multiply';
 

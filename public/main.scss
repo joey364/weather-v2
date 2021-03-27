@@ -1,4 +1,4 @@
-$bg-img: url('../assets/img/sandstorms.jpg');
+$bg-img: url('../public/assets/img/sandstorms.jpg');
 
 :root {
   --clr-primary: #aaa;
@@ -46,12 +46,27 @@ img {
   transition: background 550ms ease-in;
 }
 
+.dialog {
+  width: 60%;
+  max-width: 30em;
+  background: #e74c3c;
+  margin: 4.5em auto;
+  color: white;
+  border: none;
+  padding: 1em;
+  font-size: 1rem;
+  font-weight: bold;
+  letter-spacing: 0.04em;
+  border-radius: 7px;
+  box-shadow: 0 0 3em rgba(black, 0.5);
+
+  animation: alertTransition 2000ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
 .container {
   width: 80%;
   margin: 0 auto;
   max-width: 1200px;
-
-  // border: 2px solid red;
 }
 
 .logo img {
@@ -159,8 +174,6 @@ img {
   border-radius: 30px;
 
   box-shadow: 0 0 2em rgba(black, 0.3);
-
-  // border: 2px solid green;
 }
 
 .date {
@@ -183,8 +196,8 @@ img {
   border-radius: 25px;
   margin: 0 auto;
   padding: 0.5em;
-  background: rgba($color: white, $alpha: 0.4);
-  box-shadow: 0 0 3em rgba($color: black, $alpha: .5);
+  background: rgba($color: white, $alpha: 0.2);
+  box-shadow: 0 0 3em rgba($color: black, $alpha: 0.5);
 }
 
 .desc {
@@ -206,17 +219,27 @@ img {
 
 @media (max-width: 600px) {
   .search-bar {
+    --size: 50px;
     max-width: 200px;
   }
 
   .container {
-    width: 90%;
+    width: 80%;
   }
 
   .temp {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: .5em 1.5em;
+    padding: 0.5em 1.5em;
+  }
+}
+
+@keyframes alertTransition {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
   }
 }
