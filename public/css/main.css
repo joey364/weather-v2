@@ -23,7 +23,7 @@ img {
   min-height: 100vh;
   width: 100%;
   background-color: rgba(0, 0, 0, 0.25) !important;
-  background-image: url("../public/assets/img/sandstorms.jpg"), linear-gradient(to top, rgba(0, 0, 0, 0.8) 0, rgba(0, 0, 0, 0) 30%, rgba(0, 0, 0, 0) 60%, rgba(0, 0, 0, 0.8) 100%);
+  background-image: url("./assets/img/sandstorms.jpg"), linear-gradient(to top, rgba(0, 0, 0, 0.8) 0, rgba(0, 0, 0, 0) 30%, rgba(0, 0, 0, 0) 60%, rgba(0, 0, 0, 0.8) 100%);
   background-size: cover !important;
   background-position: center center !important;
   background-blend-mode: multiply !important;
@@ -168,7 +168,7 @@ img {
   border-radius: 25px;
   margin: 0 auto;
   padding: 0.5em;
-  background: rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.1);
   box-shadow: 0 0 3em rgba(0, 0, 0, 0.5);
 }
 
@@ -190,8 +190,16 @@ img {
 }
 
 @media (max-width: 600px) {
+  .logo img {
+    height: 2rem;
+  }
+
+  .search-bar__submit {
+    font-size: 1rem;
+  }
+
   .search-bar {
-    --size: 50px;
+    --size: 40px;
     max-width: 200px;
   }
 
@@ -199,7 +207,12 @@ img {
     width: 80%;
   }
 
+  .date, .location, .desc {
+    font-size: 1.3rem;
+  }
+
   .temp {
+    font-size: 2rem;
     display: flex;
     justify-content: center;
     align-items: center;

@@ -189,7 +189,7 @@ const updateWeather = (
     )`;
 
   appElement.style.background =
-    `url(../public/assets/img/${getWeatherBackgroundImage(weather)}),` +
+    `url(./assets/img/${getWeatherBackgroundImage(weather)}),` +
     bgGradient;
 
   appElement.style.backgroundBlendMode = 'multiply';

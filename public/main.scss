@@ -1,4 +1,4 @@
-$bg-img: url('../public/assets/img/sandstorms.jpg');
+$bg-img: url('./assets/img/sandstorms.jpg');
 
 :root {
   --clr-primary: #aaa;
@@ -196,7 +196,7 @@ img {
   border-radius: 25px;
   margin: 0 auto;
   padding: 0.5em;
-  background: rgba($color: white, $alpha: 0.2);
+  background: rgba($color: white, $alpha: 0.1);
   box-shadow: 0 0 3em rgba($color: black, $alpha: 0.5);
 }
 
@@ -218,8 +218,15 @@ img {
 }
 
 @media (max-width: 600px) {
+  .logo img{
+    height: 2rem;
+  }
+
+  .search-bar__submit {
+    font-size: 1rem;
+  }
   .search-bar {
-    --size: 50px;
+    --size: 40px;
     max-width: 200px;
   }
 
@@ -227,7 +234,12 @@ img {
     width: 80%;
   }
 
+  .date, .location, .desc {
+    font-size: 1.3rem;
+  }
+
   .temp {
+    font-size: 2rem;
     display: flex;
     justify-content: center;
     align-items: center;
