@@ -203,7 +203,7 @@ img {
 .desc {
   margin-top: 2em;
   font-size: 1.5rem;
-  font-weight: lighter;
+  font-weight: 600;
   text-transform: capitalize;
 }
 
@@ -218,23 +218,28 @@ img {
 }
 
 @media (max-width: 600px) {
-  .logo img{
+  .logo img {
     height: 2rem;
   }
 
-  .search-bar__submit {
-    font-size: 1rem;
-  }
   .search-bar {
     --size: 40px;
     max-width: 200px;
+
+    &__submit,
+    &__input::placeholder,
+    &__input {
+      font-size: 1.1rem;
+    }
   }
 
   .container {
     width: 80%;
   }
 
-  .date, .location, .desc {
+  .date,
+  .location,
+  .desc {
     font-size: 1.3rem;
   }
 

@@ -125,6 +125,8 @@ const getWeatherBackgroundImage = (weather) => {
       return 'snow.jpg';
     case 'Mist':
       return 'mist.jpg';
+    case 'Fog':
+      return 'mist.jpg';
     case 'Dust':
       return 'sandstorms.jpg';
     case 'Sand':
