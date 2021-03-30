@@ -50,12 +50,14 @@ const erroerDialog = document.querySelector('.dialog');
 
 submitButton.addEventListener('click', (e) => {
   e.preventDefault();
-  getWeatherData(searchInput.value);
-  searchInput.value = '';
+  if (searchInput.value) {
+    getWeatherData(searchInput.value);
+    searchInput.value = '';
+  }
 });
 
 searchInput.addEventListener('keypress', (e) => {
-  if (e.key === 'Enter') {
+  if (searchInput.value && e.key === 'Enter') {
     getWeatherData(searchInput.value);
     searchInput.value = '';
   }
@@ -99,9 +101,9 @@ const getWeatherData = (query) => {
 
     .catch((error) => {
       console.log(error);
-      erroerDialog.show()
+      erroerDialog.show();
       setTimeout(() => {
-       erroerDialog.close(); 
+        erroerDialog.close();
       }, 2500);
       // alert('Do the search again');
     });
@@ -112,37 +114,37 @@ const getWeatherData = (query) => {
 const getWeatherBackgroundImage = (weather) => {
   switch (weather) {
     case 'Clouds':
-      return 'cloudy.jpg';
+      return 'cloudy.webp';
     case 'Clear':
-      return 'sunny.jpg';
+      return 'sunny.webp';
     case 'Thunderstorm':
-      return 'thunderstorms.jpg';
+      return 'thunderstorms.webp';
     case 'Drizzle':
-      return 'drizzle.jpg';
+      return 'drizzle.webp';
     case 'Rain':
-      return 'rain.jpg';
+      return 'rain.webp';
     case 'Snow':
-      return 'snow.jpg';
+      return 'snow.webp';
     case 'Mist':
-      return 'mist.jpg';
+      return 'mist.webp';
     case 'Fog':
-      return 'mist.jpg';
+      return 'mist.webp';
     case 'Dust':
-      return 'sandstorms.jpg';
+      return 'sandstorms.webp';
     case 'Sand':
-      return 'sandstorms.jpg';
+      return 'sandstorms.webp';
     case 'Haze':
-      return 'haze.jpg';
+      return 'haze.webp';
     case 'Smoke':
-      return 'smoke.jpg';
+      return 'smoke.webp';
     case 'Ash':
-      return 'ash.jpg';
+      return 'ash.webp';
     case 'Squall':
-      return 'squall.jpg';
+      return 'squall.webp';
     case 'Tornado':
-      return 'tornado.jpg';
+      return 'tornado.webp';
     default:
-      return 'sandstorms.jpg';
+      return 'sandstorms.webp';
   }
 };
 
@@ -191,8 +193,7 @@ const updateWeather = (
     )`;
 
   appElement.style.background =
-    `url(./assets/img/${getWeatherBackgroundImage(weather)}),` +
-    bgGradient;
+    `url(./assets/img/${getWeatherBackgroundImage(weather)}),` + bgGradient;
 
   appElement.style.backgroundBlendMode = 'multiply';
 
