@@ -46,7 +46,7 @@ document.querySelector('.date').textContent = dateBuilder(new Date());
 const appElement = document.querySelector('.app');
 const searchInput = document.querySelector('.search-bar__input');
 const submitButton = document.querySelector('.search-bar__submit');
-const erroerDialog = document.querySelector('.dialog');
+const errorDialog = document.querySelector('.dialog');
 
 submitButton.addEventListener('click', (e) => {
   e.preventDefault();
@@ -63,9 +63,9 @@ searchInput.addEventListener('keypress', (e) => {
   }
 });
 
-// * Fetch the data from the input recieved
+// * Fetch the data from the input received
 
-// * Funtion that gets the actual data from the weather service ✅
+// * Function that gets the actual data from the weather service ✅
 
 const getWeatherData = (query) => {
   fetch(
@@ -101,9 +101,9 @@ const getWeatherData = (query) => {
 
     .catch((error) => {
       console.log(error);
-      erroerDialog.show();
+      errorDialog.show();
       setTimeout(() => {
-        erroerDialog.close();
+        errorDialog.close();
       }, 2500);
       // alert('Do the search again');
     });
@@ -148,7 +148,7 @@ const getWeatherBackgroundImage = (weather) => {
   }
 };
 
-//Returns the emoji for the weather data recieved 😆
+//Returns the emoji for the weather data received 😆
 const getIcon = (condition) => {
   if (condition < 300) {
     return '🌩';
@@ -175,7 +175,7 @@ const getEmoji = (countryCode) => {
   return flags[`${countryCode.toUpperCase()}`].emoji;
 };
 
-// * Update the values gotton from the query 🔥
+// * Update the values gotten from the query 🔥
 const updateWeather = (
   countryCode,
   city,
