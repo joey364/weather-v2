@@ -5,8 +5,29 @@ const needle = require('needle')
 
 const { API_BASE_URL, API_KEY_NAME, API_KEY_VALUE } = process.env
 
-router.get('/', (req, res) => {
-  res.status(200).json({ success: true })
+router.get('/', async (req, res, next) => {
+  try {
+    const params = new URLSearchParams({
+      ...url.parse(req.url, true).query,
+      [API_KEY_NAME]: API_KEY_VALUE,
+      units: 'metric'
+    })
+
+    const requestUrl = `${API_BASE_URL}?${params}`
+
+    const apiRes = await needle('get', requestUrl)
+    const data = apiRes.body
+
+    // Log the request to the public API
+    if (process.env.NODE_ENV !== 'production') {
+      console.log(`request-url: ${requestUrl}`)
+    }
+
+    res.status(200).send(data)
+  } catch (error) {
+    console.log(error)
+    next(error)
+  }
 })
 
 module.exports = router
