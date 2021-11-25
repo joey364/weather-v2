@@ -3,7 +3,7 @@ const url = require('url')
 const router = require('express').Router()
 const needle = require('needle')
 
-const { OPENWEATHER_BASE_URL, OPENWEATHER_KEY_NAME, OPENWEATHER_KEY_VALUE } = process.env
+const { API_BASE_URL, API_KEY_NAME, API_KEY_VALUE } = process.env
 
 router.get('/', (req, res) => {
   res.status(200).json({ success: true })
