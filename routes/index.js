@@ -18,11 +18,6 @@ router.get('/', async (req, res, next) => {
     const apiRes = await needle('get', requestUrl)
     const data = apiRes.body
 
-    // Log the request to the public API
-    if (process.env.NODE_ENV !== 'production') {
-      console.log(`request-url: ${requestUrl}`)
-    }
-
     res.status(200).send(data)
   } catch (error) {
     console.log(error)
