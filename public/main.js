@@ -1,10 +1,5 @@
 import { flags } from './flags.js';
 
-const openWeather = {
-  key: 'fa60348fb221f95615234d52ce4d0ce6',
-  url: 'https://api.openweathermap.org/data/2.5/',
-};
-
 // * Build the date
 const dateBuilder = (d) => {
   let months = [
@@ -67,47 +62,39 @@ searchInput.addEventListener('keypress', (e) => {
 
 // * Function that gets the actual data from the weather service ✅
 
-const getWeatherData = (query) => {
-  fetch(
-    `${openWeather.url}weather?q=${query}&units=metric&APPID=${openWeather.key}`
-  )
-    .then((response) => response.json())
-    .then((data) => {
-      let countryCode = data.sys.country;
-      let city = data.name;
-      let temp = Math.round(data.main.temp);
-      let condition = data.weather[0].id;
-      let weather = data.weather[0].main;
-      let description = data.weather[0].description;
+const getWeatherData = async (query) => {
+  try {
+    const response = await fetch(`/api?q=${query}`)
+    const data = await response.json()
 
-      let Weather = {
-        countryCode,
-        city,
-        temp,
-        condition,
-        weather,
-        description,
-      };
+    const { name, sys, main, weather } = data
 
-      updateWeather(
-        Weather.countryCode,
-        Weather.city,
-        Weather.temp,
-        Weather.condition,
-        Weather.weather,
-        Weather.description
-      );
-    })
+    let countryCode = sys.country;
+    let city = name;
+    let temp = Math.round(main.temp);
+    let condition = weather[0].id;
+    let responseWeather = weather[0].main;
+    let description = weather[0].description;
 
-    .catch((error) => {
-      console.log(error);
-      errorDialog.show();
-      setTimeout(() => {
-        errorDialog.close();
-      }, 2500);
-      // alert('Do the search again');
-    });
-};
+    updateWeather(
+      countryCode,
+      city,
+      temp,
+      condition,
+      responseWeather,
+      description
+    )
+
+  } catch (error) {
+    console.log(error);
+    errorDialog.show();
+    setTimeout(() => {
+      errorDialog.close();
+    }, 2500);
+    // alert('Do the search again');
+  }
+}
+
 
 // * Update the UI
 
