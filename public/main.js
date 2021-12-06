@@ -2,36 +2,9 @@ import { flags } from './flags.js';
 
 // * Build the date
 const dateBuilder = (d) => {
-  let months = [
-    'January',
-    'February',
-    'March',
-    'April',
-    'May',
-    'June',
-    'July',
-    'August',
-    'September',
-    'October',
-    'November',
-    'December',
-  ];
-  let days = [
-    'Sunday',
-    'Monday',
-    'Tuesday',
-    'Wednesday',
-    'Thursday',
-    'Friday',
-    'Saturday',
-  ];
-
-  let day = days[d.getDay()];
-  let month = months[d.getMonth()];
-  let year = d.getFullYear();
-  let date = d.getDate();
-
-  return `${day}, ${date} ${month}, ${year}`;
+  const dateOptions = { year: 'numeric', month: 'short', day: 'numeric', weekday: 'long' }
+  const locale = navigator.language // get locale string
+  return d.toLocaleDateString(locale, dateOptions)
 };
 
 document.querySelector('.date').textContent = dateBuilder(new Date());
